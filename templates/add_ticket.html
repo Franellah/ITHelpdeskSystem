@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Ticket</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="form-card">
+
+        <h1>Create Ticket</h1>
+
+        <form method="POST">
+
+            <label>Store</label>
+
+            <select name="store" required>
+                <option value="">-- Select Store --</option>
+
+                {% for store in stores %}
+                <option value="{{ store }}">
+                    {{ store }}
+                </option>
+                {% endfor %}
+            </select>
+
+            <br><br>
+
+            <label>Asset</label>
+
+            <select name="asset_name" required>
+                <option value="">-- Select Asset --</option>
+
+                {% for asset in assets %}
+                <option value="{{ asset }}">
+                    {{ asset }}
+                </option>
+                {% endfor %}
+            </select>
+
+            <br><br>
+
+            <label>Issue Category</label>
+
+            <select name="issue_category" required>
+                <option value="">-- Select Category --</option>
+
+                {% for category in issue_categories %}
+                <option value="{{ category }}">
+                    {{ category }}
+                </option>
+                {% endfor %}
+            </select>
+
+            <br><br>
+
+            <label>Priority</label>
+
+            <select name="priority" required>
+                <option value="">-- Select Priority --</option>
+
+                {% for priority in priorities %}
+                <option value="{{ priority }}">
+                    {{ priority }}
+                </option>
+                {% endfor %}
+            </select>
+
+            <br><br>
+
+            <label>Issue Description</label>
+
+            <textarea name="issue_description"
+                      rows="5"
+                      required></textarea>
+
+            <br><br>
+
+            <label>Status</label>
+
+            <select name="status">
+                <option value="Open">Open</option>
+                <option value="Assigned">Assigned</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Waiting Parts">Waiting Parts</option>
+                <option value="Resolved">Resolved</option>
+                <option value="Closed">Closed</option>
+            </select>
+
+            <br><br>
+
+            <label>Assigned To</label>
+
+<select name="assigned_to">
+    {% for technician in technicians %}
+    <option value="{{ technician }}">
+        {{ technician }}
+    </option>
+    {% endfor %}
+</select>
+
+<br><br>
+
+<button type="submit" class="btn-save">
+    💾 Save Ticket
+</button>
+
+</form>
+
+<br>
+
+<div class="button-group">
+
+    <a href="/" class="btn-back">
+        🏠 Back to Home
+    </a>
+
+</div>      
+
+        <br>
+
+</body>
+</html>
